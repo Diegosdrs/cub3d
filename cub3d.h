@@ -6,7 +6,7 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:31:13 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/06 11:26:25 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:40:23 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 #define VITESSE 0.1
 #define PI 3.14159265358
 #define SENSITIVITY 0.03
-#define mouse_sensitivity 0.2
+#define mouse_sensitivity 0.02
 
 typedef struct s_vector
 {
