@@ -6,7 +6,7 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 09:47:39 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/13 09:50:43 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/13 09:54:57 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	mouse_movement(int x, int y, t_cub *cub)
 	static int	last_x;
 	int			delta_x;
 	double		rotation_angle;
-	(void) y;
+	(void)y;
 
 	if (cub->player.mouse == 0)
 	{
