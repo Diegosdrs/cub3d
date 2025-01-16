@@ -6,18 +6,19 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 09:47:39 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/13 09:54:57 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:45:12 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	mouse_movement(int x, int y, t_cub *cub)
+int	mouse_movement(int x, t_cub *cub)
 {
 	static int	last_x;
 	int			delta_x;
 	double		rotation_angle;
-	(void)y;
+	double		old_dir_x;
+	//
 
 	if (cub->player.mouse == 0)
 	{
@@ -28,15 +29,24 @@ int	mouse_movement(int x, int y, t_cub *cub)
 	delta_x = x - last_x;
 	last_x = x;
 	rotation_angle = -delta_x * mouse_sensitivity;
+	old_dir_x = cub->player.dir.x;
+	mouse_movement_2(cub, rotation_angle, old_dir_x);
+	return (0);
+}
 
-	double old_dir_x = cub->player.dir.x;
-	cub->player.dir.x = cub->player.dir.x * cos(rotation_angle) - cub->player.dir.y * sin(rotation_angle);
-	cub->player.dir.y = old_dir_x * sin(rotation_angle) + cub->player.dir.y * cos(rotation_angle);
-
-	double old_cam_x = cub->player.cam.x;
-	cub->player.cam.x = cub->player.cam.x * cos(rotation_angle) - cub->player.cam.y * sin(rotation_angle);
-	cub->player.cam.y = old_cam_x * sin(rotation_angle) + cub->player.cam.y * cos(rotation_angle);
-
+int	mouse_movement_2(t_cub *cub, double	rotation_angle, double	old_dir_x)
+{
+	double		old_cam_x;
+	
+	cub->player.dir.x = cub->player.dir.x * cos(rotation_angle) - \
+		cub->player.dir.y * sin(rotation_angle);
+	cub->player.dir.y = old_dir_x * sin(rotation_angle) + \
+		cub->player.dir.y * cos(rotation_angle);
+	old_cam_x = cub->player.cam.x;
+	cub->player.cam.x = cub->player.cam.x * cos(rotation_angle) - \
+		cub->player.cam.y * sin(rotation_angle);
+	cub->player.cam.y = old_cam_x * sin(rotation_angle) + \
+		cub->player.cam.y * cos(rotation_angle);
 	render_image(cub);
 	return (0);
 }

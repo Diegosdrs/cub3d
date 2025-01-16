@@ -6,7 +6,7 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:24:47 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/06 11:25:48 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:44:43 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	render_minimap(t_cub *cub)
 {
 	int	map_x;
 	int	map_y;
-	int	square_size;
+	//int	square_size;
 	int	color;
 
-	square_size = sizetext * 0.1;
+	//square_size = sizetext * 0.1;
 	map_y = 0;
 	while(map_y < cub->map_height)
 	{
@@ -35,26 +35,29 @@ void	render_minimap(t_cub *cub)
 				color = 0xFFFFFF;
 			else if (cub->map[map_y][map_x] == '0')
 				color = 0x000000;
-			draw_square(cub, map_x * square_size, map_y * square_size, square_size, color);
+			draw_square(cub, map_x, map_y, color);
 			map_x++;
 		}
 		map_y++;
 	}
-	draw_square(cub, cub->player.pos.x * square_size, cub->player.pos.y * square_size, square_size, color);
+	draw_square(cub, cub->player.pos.x, cub->player.pos.y, color);
 }
 
-void	draw_square(t_cub *cub, int x, int y, int size, int color)
+void	draw_square(t_cub *cub, int x, int y, int color)
 {
+	int	square_size;
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < size)
+	square_size = sizetext * 0.1;
+	while (i < square_size)
 	{
 		j = 0;
-		while (j < size)
+		while (j < square_size)
 		{
-			mlx_pixel_put(cub->mlx_connection, cub->window, x + j, y + i, color);
+			mlx_pixel_put(cub->mlx_connection, cub->window, \
+				(square_size * x) + j, (square_size * y) + i, color);
 			j++;
 		}
 		i++;
