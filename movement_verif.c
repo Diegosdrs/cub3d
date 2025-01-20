@@ -6,7 +6,7 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:16:12 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/20 10:27:50 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:18:58 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,14 @@ int	verif_passage_ouest(t_cub *cub, int y, int x)
 		if (cub->map[y][x] != '0')
 			return (1);
 		return (0);
+	}
+}
+
+void	move_dir(t_cub *cub)
+{
+	if (cub->player.dir.x == 0 || cub->player.dir.y == 0)
+	{
+		cub->player.dir.x += 0.005;
+		cub->player.dir.y += 0.005;
 	}
 }

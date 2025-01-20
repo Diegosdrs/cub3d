@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:24:47 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/16 11:49:23 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:23:57 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_square(t_cub *cub, int x, int y, int color)
 	int	j;
 
 	i = 0;
-	square_size = sizetext * 0.1;
+	square_size = SIZTEXT * 0.1;
 	while (i < square_size)
 	{
 		j = 0;

@@ -6,7 +6,7 @@
 /*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:26:37 by artberna          #+#    #+#             */
-/*   Updated: 2025/01/15 13:26:47 by artberna         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:08:16 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	check_six(char **tab)
 		i++;
 	}
 	if (count == 6)
-		return (printf("INFO : Count texture = %d\n", count), 0); // debug
+		return (0);
 	return (1);
 }
 
@@ -101,5 +101,5 @@ int	check_input(int ac, char **av)
 	if (is_openable(av[1], 0))
 		return (printf("File cannot be opened!\n"), 1);
 	else
-		return (printf("INFO : File usable\n"), 0); //debug
+		return (0);
 }

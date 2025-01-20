@@ -6,7 +6,7 @@
 /*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:18:58 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/15 13:28:45 by artberna         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:23:23 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	algo_raycast(t_cub *cub)
 {
-	while (cub->pixel < screenWidth)
+	while (cub->pixel < SCREENW)
 	{
 		map_position(&cub->player);
 		calculate_current_ray(cub);
@@ -42,7 +42,7 @@ void	calculate_current_ray(t_cub *cub)
 	double		ray;
 	t_vector	ray_ray;
 
-	ray = 2 * ((double)cub->pixel / (screenWidth - 1)) - 1;
+	ray = 2 * ((double)cub->pixel / (SCREENW - 1)) - 1;
 	ray_ray = mult_vector(&cub->player.cam, ray);
 	cub->player.ray_dir = add_vector(&cub->player.dir, &ray_ray);
 }

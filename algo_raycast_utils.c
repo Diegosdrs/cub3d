@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_raycast_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:10:55 by dsindres          #+#    #+#             */
-/*   Updated: 2024/12/16 14:13:32 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:23:57 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	impact_on_wall(t_player *player)
 			wall = player->pos.x + player->size_ray * player->ray_dir.x;
 	}
 	wall -= floor(wall);
-	player->text_x = (int)(wall * (double)sizetext);
+	player->text_x = (int)(wall * (double)SIZTEXT);
 	if (player->hit_side && player->pos.y < player->map_square.y)
-		player->text_x = sizetext - player->text_x - 1;
+		player->text_x = SIZTEXT - player->text_x - 1;
 	if (!player->hit_side && player->pos.x > player->map_square.x)
-		player->text_x = sizetext - player->text_x - 1;
+		player->text_x = SIZTEXT - player->text_x - 1;
 }
 
 double	perpendicular_dist(t_player *player, int value, int flag)

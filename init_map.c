@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:04:48 by artberna          #+#    #+#             */
-/*   Updated: 2025/01/15 13:00:57 by artberna         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:25:49 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static int	set_position(t_cub *cub, char **tab)
 		while (tab[i][j])
 		{
 			if (tab[i][j] == 'N')
-				return (cub->orientation = 'N', init_player(cub, i, j), 0);
+				return (cub->orientation = 'N', init_player(cub, i, j, tab), 0);
 			if (tab[i][j] == 'S')
-				return (cub->orientation = 'S', init_player(cub, i, j), 0);
+				return (cub->orientation = 'S', init_player(cub, i, j, tab), 0);
 			if (tab[i][j] == 'E')
-				return (cub->orientation = 'E', init_player(cub, i, j), 0);
+				return (cub->orientation = 'E', init_player(cub, i, j, tab), 0);
 			if (tab[i][j] == 'W')
-				return (cub->orientation = 'W', init_player(cub, i, j), 0);
+				return (cub->orientation = 'W', init_player(cub, i, j, tab), 0);
 			j++;
 		}
 		i++;

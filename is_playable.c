@@ -6,7 +6,7 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:04:16 by artberna          #+#    #+#             */
-/*   Updated: 2025/01/16 11:48:13 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:25:08 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ static void	fill_tab(char **src, char **dest)
 				|| src[i + 6][j] == 'E' || src[i + 6][j] == 'W')
 				dest[i][j] = '0';
 			else if (src[i + 6][j] == ' ')
-			 	dest[i][j] = '1';
+				dest[i][j] = '1';
 			else
 				dest[i][j] = src[i + 6][j];
-
 			j++;
 		}
 		i++;
@@ -65,18 +64,18 @@ static char	**create_tab(t_cub *cub)
 static int	flood_fill(t_cub *cub, char **tab, int i, int j)
 {
 	if (j < 0 || i < 0 || i >= cub->map_height || j >= cub->map_width)
-		return (printf("-----1---"), 1); //debug
+		return (printf("1 COORDONNEES %d %d \n", i, j), 1);
 	if (tab[i][j] == '1' || tab[i][j] == '.')
 		return (0);
 	if (tab[i][j] == ' ')
-		return (printf("-----2---"), 1); //debug
+		return (printf("2 COORDONNEES %d %d \n", i, j), 1);
 	tab[i][j] = '.';
 	if (!flood_fill(cub, tab, i + 1, j)
 		&& !flood_fill(cub, tab, i - 1, j)
 		&& !flood_fill(cub, tab, i, j + 1)
 		&& !flood_fill(cub, tab, i, j - 1))
 		return (0);
-	return (printf("---3-----"),1); //debug
+	return (printf("3 COORDONNEES %d %d \n", i, j), 1);
 }
 
 static char	**copy_tab(t_cub *cub, char **tab)
@@ -115,12 +114,8 @@ int	is_playable(t_cub *cub, char **tab)
 	to_test = NULL;
 	to_ret = NULL;
 	to_test = copy_tab(cub, tab);
-	// to_test = create_tab(cub);  //debug
 	if (!to_test)
 		return (printf("Memory allocation failed!\n"), 1);
-	// fill_tab(tab, to_test);  //debug
-	printf("INFO : DOUBLE TAB COPY\n");  //debug
-	print_double(to_test);  //debug
 	if (flood_fill(cub, to_test, \
 		(int)cub->player.pos.y, (int)cub->player.pos.x))
 		return (printf("Map not closed!\n"), free_double(to_test), 1);
