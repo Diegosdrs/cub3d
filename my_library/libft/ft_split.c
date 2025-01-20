@@ -6,7 +6,7 @@
 /*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:18:55 by artberna          #+#    #+#             */
-/*   Updated: 2024/07/10 17:53:27 by artberna         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:01:03 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*ft_strdupsplit(const char *s, int limit)
 	return (dup);
 }
 
-static char	**free_malloc(char **s, int index)
+char	**free_malloc(char **s, int index)
 {
 	while (index >= 0)
 	{

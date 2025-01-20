@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_raycast_utils_3.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:15 by dsindres          #+#    #+#             */
-/*   Updated: 2024/12/17 15:51:37 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:25:47 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ double	dist_to_wall_x(t_player *player)
 
 	if (player->ray_dir.x < 0)
 	{
-		dist_to_side_x = (player->pos.x - player->map_square.x) * (1 / player->ray_dir.x);
+		dist_to_side_x = (player->pos.x - player->map_square.x) * \
+		(1 / player->ray_dir.x);
 		player->map_square.x += -1;
 	}
 	else
@@ -36,7 +37,8 @@ double	dist_to_wall_y(t_player *player)
 
 	if (player->ray_dir.y < 0)
 	{
-		dist_to_side_y = (player->pos.y - player->map_square.y) * (1 / player->ray_dir.y);
+		dist_to_side_y = (player->pos.y - player->map_square.y) \
+		* (1 / player->ray_dir.y);
 		player->map_square.y += -1;
 	}
 	else

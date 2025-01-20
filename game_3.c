@@ -6,41 +6,39 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:24:47 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/16 10:44:43 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:49:23 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-unsigned int rgb_to_hex(int r, int g, int b)
+unsigned int	rgb_to_hex(int r, int g, int b)
 {
-	return (r << 16) | (g << 8) | b;
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	render_minimap(t_cub *cub)
 {
 	int	map_x;
 	int	map_y;
-	//int	square_size;
 	int	color;
 
-	//square_size = sizetext * 0.1;
 	map_y = 0;
-	while(map_y < cub->map_height)
+	while (map_y < cub->map_height)
 	{
 		map_x = 0;
-		while(map_x < cub->map_width)
+		while (map_x < cub->map_width)
 		{
 			if (cub->map[map_y][map_x] == '1')
-				color = 0xFFFFFF;
-			else if (cub->map[map_y][map_x] == '0')
 				color = 0x000000;
+			else if (cub->map[map_y][map_x] == '0')
+				color = 0xFFFFFF;
 			draw_square(cub, map_x, map_y, color);
 			map_x++;
 		}
 		map_y++;
 	}
-	draw_square(cub, cub->player.pos.x, cub->player.pos.y, color);
+	draw_square(cub, cub->player.pos.x, cub->player.pos.y, 0xFF00FF);
 }
 
 void	draw_square(t_cub *cub, int x, int y, int color)
@@ -56,7 +54,7 @@ void	draw_square(t_cub *cub, int x, int y, int color)
 		j = 0;
 		while (j < square_size)
 		{
-			mlx_pixel_put(cub->mlx_connection, cub->window, \
+			mlx_pixel_put(cub->mlx_co, cub->window, \
 				(square_size * x) + j, (square_size * y) + i, color);
 			j++;
 		}

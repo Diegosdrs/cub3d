@@ -6,17 +6,17 @@
 /*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:31:13 by dsindres          #+#    #+#             */
-/*   Updated: 2025/01/16 10:44:58 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:29:30 by dsindres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <math.h>
-#include <sys/stat.h>
-#include <X11/keysym.h>
-#include <X11/X.h>
+# include <math.h>
+# include <sys/stat.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include <stdio.h>
 # include <dirent.h>
 # include <errno.h>
@@ -36,15 +36,22 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <unistd.h>
-#include "minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx.h"
+# include "my_library/my_library.h"
 
-#define screenWidth 1280
-#define screenHeight 720
-#define sizetext 64
-#define VITESSE 0.1
-#define PI 3.14159265358
-#define SENSITIVITY 0.03
-#define mouse_sensitivity 0.2
+# define screenWidth 1280
+# define screenHeight 720
+# define sizetext 64
+# define VITESSE 0.05
+# define PI 3.14159265358
+# define SENSITIVITY 0.03
+# define mouse_sensitivity 0.007
+# define IS_MAP "NSEW01 "
+# define NORD 1
+# define SUD 2
+# define EST 3
+# define OUEST 4
+
 
 typedef struct s_vector
 {
@@ -100,7 +107,7 @@ typedef struct s_player
 
 typedef struct s_cub
 {
-	void		*mlx_connection;
+	void		*mlx_co;
 	void		*window;
 	char		**map;
 	int			pixel;
@@ -122,25 +129,42 @@ typedef struct s_cub
 	int			s;
 	int			left;
 	int			right;
+	char		orientation;
 }				t_cub;
 
 /******************************************************************************
 #                                    ARTHUR                                   *
 #*****************************************************************************/
 
+// check_all.c
+int				check_all(char **tab);
+int				check_input(int ac, char **av);
+int				check_order(char **t);
+
+
+// init_graphics.c
+int				init_graphics(t_cub *cub, char **tab);
+
+// utils.c
+void			print_double(char **tab);
+void			free_double(char **tab);
+void			free_double_index(char **s, int index);
+char			*ft_strdup_mo(const char *s);
+int				is_openable(char *str, int option);
+
+//init_map.c
+int				init_map(t_cub *cub, char **tab);
+
+//init_player.c
+void			init_player(t_cub *cub, int i, int j);
+
+//is_playable.c
+int				is_playable(t_cub *cub, char **tab);
 
 
 /******************************************************************************
 #                                    DIEGO                                    *
 #*****************************************************************************/
-
-// init_all.c
-void			init_all(t_cub *cub);
-void			init_img(t_cub *cub);
-void			init_map(t_cub *cub);
-void			init_player(t_cub *cub);
-void			init_color(t_cub *cub);
-void			print_double(char **tab);
 
 // game.c
 int				game_controler(t_cub *cub);
@@ -192,6 +216,7 @@ int				movement_key(int key, t_cub *cub);
 int				movement_key_2(int key, t_cub *cub);
 void			move_up(t_cub *cub);
 void			move_down(t_cub *cub);
+int				passage(t_cub *cub, double a, double b, int dir);
 
 // movement_2.c
 void			move_left(t_cub *cub);
@@ -200,9 +225,20 @@ void			turn_left(t_cub *cub);
 void			turn_right(t_cub *cub);
 
 // movement_3.c
-int				mouse_movement(int x, t_cub *cub);
-int				mouse_movement_2(t_cub *cub, double	rotation_angle, double	old_dir_x);
+int				mouse_movement(int x, int y, t_cub *cub);
+int				mouse_movement_2(t_cub *cub, double rotation_angle, double old_dir_x);
 
+// movement_verif.c
+int				verif_passage_nord(t_cub *cub, int y, int x);
+int				verif_passage_sud(t_cub *cub, int y, int x);
+int				verif_passage_est(t_cub *cub, int y, int x);
+int				verif_passage_ouest(t_cub *cub, int y, int x);
+
+// movement_verif_2.c
+int				verif_passage_2_1(t_cub *cub, int y, int x);
+int				verif_passage_2_2(t_cub *cub, int y, int x);
+int				verif_passage_2_3(t_cub *cub, int y, int x);
+int				verif_passage_2_4(t_cub *cub, int y, int x);
 
 // Close_game.c
 int				close_window(t_cub *cub);

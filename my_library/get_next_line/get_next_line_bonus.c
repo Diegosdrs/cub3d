@@ -6,7 +6,7 @@
 /*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:30:20 by artberna          #+#    #+#             */
-/*   Updated: 2024/06/18 10:29:49 by artberna         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:50:40 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static char	*extend_stash(char *stash, char *buff)
 	temp = ft_strjoin(stash, buff);
 	if (!temp)
 		return (NULL);
-	free (stash);
 	return (temp);
 }
 

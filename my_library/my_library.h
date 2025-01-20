@@ -6,7 +6,7 @@
 /*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:41:00 by artberna          #+#    #+#             */
-/*   Updated: 2024/10/17 14:21:34 by artberna         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:58:35 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int		ft_putnbrbase_printf(unsigned long n, int fd, char c, int interupt);
 //  *************************  GET_NEXT_LINE  *************************
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 1024
 # endif
 
 char	*get_next_line(int fd);

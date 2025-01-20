@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsindres <dsindres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: artberna <artberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:18:58 by dsindres          #+#    #+#             */
-/*   Updated: 2024/12/16 15:57:04 by dsindres         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:28:45 by artberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	algo_raycast(t_cub *cub)
 		cub->pixel++;
 	}
 	cub->pixel = 0;
-	mlx_clear_window(cub->mlx_connection, cub->window);
-	mlx_put_image_to_window(cub->mlx_connection, cub->window, cub->frame.ptr, 0, 0);
+	mlx_clear_window(cub->mlx_co, cub->window);
+	mlx_put_image_to_window(cub->mlx_co, cub->window, \
+	cub->frame.ptr, 0, 0);
 }
 
 void	map_position(t_player *player)
